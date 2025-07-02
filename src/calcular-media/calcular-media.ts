@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Boletim } from './boletim';
 
 @Component({
   selector: 'app-calcular-media',
@@ -8,10 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './calcular-media.css'
 })
 export class CalcularMedia {
+aprovado = false;
 media!: number;
+mensagem!: string;
+boletim!: Boletim;
 
-  calcularMedia(n1: number, n2: number, n3: number, n4: number){
-    this.media = (n1 *2 + n2 *2 + n3 *3 + n4 *3) / 10;
-  }
+constructor(){
+  this.boletim = new Boletim(0,0,0,0);
+}
 
 }

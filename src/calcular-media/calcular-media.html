@@ -1,6 +1,6 @@
-<h2> Calcular média </h2>
-
 <div class="inputs">
+    <h2> Calcular média </h2>
+
     <form>
         <label for="n1"> Bimestre 1: </label>
         <input #n1 id="n1" type="number" placeholder="Insira a nota">
@@ -14,12 +14,15 @@
         <label for="n4"> Bimestre 4: </label>
         <input #n4 id="n4" type="number" placeholder="Insira a nota">
 
-        <input type="button" value="Calcular" (click)="calcularMedia(+n1.value, +n2.value, +n3.value,+n4.value)">
+        <input type="button" value="Calcular" >
+        <!-- (click)="calcularMedia(+n1.value, +n2.value, +n3.value,+n4.value)" -->
+        
     </form>
 
 </div>
 
-<div class="media" *ngIf="media != undefined">
-    <p class="title"> Média parcial: </p>
-    <p> {{media}} </p>
-</div>
+    <div [class.aprovado]="aprovado" [class.provafinal]="!aprovado" class="media" *ngIf="media != undefined">
+        <p> <b> Média parcial: </b> {{media}} </p>
+        <p> {{mensagem}} </p>
+    </div> 
+

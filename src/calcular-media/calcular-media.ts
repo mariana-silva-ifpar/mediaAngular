@@ -9,13 +9,21 @@ import { Boletim } from './boletim';
   styleUrl: './calcular-media.css'
 })
 export class CalcularMedia {
-aprovado = false;
-media!: number;
-mensagem!: string;
-boletim!: Boletim;
+
+boletim = new Boletim();
+exibirProvaFinal = false;
 
 constructor(){
-  this.boletim = new Boletim(0,0,0,0);
 }
+
+   calcularMedia(n1: number,n2: number,n3: number,n4: number){
+     this.boletim.calcularMedia(n1,n2,n3,n4);
+     this.exibirProvaFinal = this.boletim.precisaProvaFinal;
+   }
+
+   calcularMediaFinal(n1: number,n2: number,n3: number,n4: number, provaFinal: number){
+    this.boletim.calcularMediaFinal(n1,n2,n3,n4,provaFinal);
+    this.exibirProvaFinal = false;
+   }
 
 }

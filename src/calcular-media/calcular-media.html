@@ -14,15 +14,30 @@
         <label for="n4"> Bimestre 4: </label>
         <input #n4 id="n4" type="number" placeholder="Insira a nota">
 
-        <input type="button" value="Calcular" >
-        <!-- (click)="calcularMedia(+n1.value, +n2.value, +n3.value,+n4.value)" -->
+        <input type="button" value="Calcular" (click)="calcularMedia(+n1.value, +n2.value, +n3.value,+n4.value)">
+        
+        <div *ngIf="boletim.precisaProvaFinal" class="provaFinal">
+
+            <label for="n4"> Prova final: </label>
+            <input #provaFinal id="provaFinal" type="number" placeholder="Insira a nota">
+            <input type="button" value="Calcular Média Final" (click)="calcularMediaFinal(+n1.value, +n2.value, +n3.value,+n4.value, +provaFinal.value)">
+        </div>
+        
         
     </form>
 
 </div>
 
-    <div [class.aprovado]="aprovado" [class.provafinal]="!aprovado" class="media" *ngIf="media != undefined">
-        <p> <b> Média parcial: </b> {{media}} </p>
-        <p> {{mensagem}} </p>
+    <div [class.aprovado]="boletim.aprovado" [class.provafinal]="!boletim.aprovado" class="media" *ngIf="boletim.media != undefined">
+        <div *ngIf="boletim.calculoRealizado && boletim.mediaFinal === null">
+            <p> <b> Média parcial: </b> {{boletim.media}} </p>
+            <p> {{boletim.mensagem}} </p>
+        </div>
+
+        <div *ngIf="boletim.mediaFinal !== null">
+            <p> <b> Média Final: </b> {{boletim.mediaFinal}} </p>
+            <p> {{boletim.mensagemFinal}} </p>
+        </div>
+        
     </div> 
 
